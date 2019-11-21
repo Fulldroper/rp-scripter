@@ -1,0 +1,18 @@
+#result{
+    max-width: 80%;
+    background-color: #d0d0cf;
+    color: #646464;
+    padding: 10px;
+    width: max-content;
+}
+#script-name{
+
+}
+.block{
+    max-width: 800px;
+    min-width: 300px;
+    width: min-content;
+    border-color: #fff0;
+    border-bottom-color: #bbb7b7;
+    border-style: dotted;
+}
