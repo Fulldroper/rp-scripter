@@ -34,15 +34,31 @@ function getCMDs() {
     })
     return result;
 }
-function compileResult(arr){
+function compileResult(arr,border){
     let temp='';
-    arr.forEach(el=>temp+=el+'</br>')
-    result.innerHTML=temp;
+    arr.forEach(el=>temp+=el+`${border}`)
+    return temp;
 }
 function generateResult() {
     blocks = document.getElementsByClassName('block')
     scriptName = document.getElementById('script-name').value;
-    compileResult(getCMDs())
+    result.innerHTML=compileResult(getCMDs(),'</br>')
+    document.getElementById('result-download').innerHTML=`<a id="download">download as file *.cfg</a>`
+    document.getElementById('download').onclick=()=>{
+        download(scriptName+".cfg",compileResult(getCMDs(),'\n'))
+    }
+}
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
 window.onload=()=>{
     initLincks();
